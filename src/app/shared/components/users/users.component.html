@@ -1,0 +1,15 @@
+<div class="row">
+   <div class="col-md-4">
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let user of usersInfo"
+        [ngClass]="{active:selectedUser === user}"
+        [routerLink]="['/users', user.id]"
+        [queryParams]="{canEdit:user.userRole}">
+            {{user.userName}}
+        </li>
+    </ul>
+   </div>
+   <div class="col-md-8">
+    <!-- <app-user></app-user> -->
+   </div>
+</div>
