@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthServiceService } from './shared/services/auth-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Routing_Practice';
+  constructor(
+    private _authService:AuthServiceService,
+    private _router:Router){
+  }
+  logInTo(){
+    this._authService.loggedInTo();
+  }
+  logOut(){
+    this._router.navigate(['/']);
+    this._authService.logOutFrom();
+  }
 }
