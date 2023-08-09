@@ -4,6 +4,7 @@
             <li class="list-group-item" 
             [class.active]="selectedProdId === prod.pId" 
             *ngFor="let prod of productsInfo"
+            (click)="selectedProdId = prod.pId"
             [routerLink]="['/products', prod.pId]"
             [queryParams]="{canEdit:prod.canReturn}">
                 {{prod.pName}}
@@ -12,5 +13,6 @@
     </div>
     <div class="col-md-8">
         <!-- <app-product></app-product> -->
+        <router-outlet></router-outlet>
     </div>
 </div>

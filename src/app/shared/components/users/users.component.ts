@@ -17,7 +17,7 @@ userId !: number ;
 
   ngOnInit(): void {
     this.usersInfo = this._usersService.getAllUsers();
-    this.selectedUser = this._usersService.usersArray[0]
+    this.selectedUser = this._usersService.usersArray[0];
   }
 
 

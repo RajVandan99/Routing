@@ -20,10 +20,10 @@ userrole!: IuserRole;
   ngOnInit(): void {
     // this.userId = +this._route.snapshot.params['id'];
     this._route.params
-        .subscribe((myParams:Params) => this.userId = +myParams['id'])
-    // console.log(this.userId);
-    this.userInfo = this._usersService.getSingleUser(this.userId);
-    // console.log(this.userInfo);
+        .subscribe((myParams:Params) =>{ 
+          this.userId = +myParams['id']
+          this.userInfo = this._usersService.getSingleUser(this.userId);
+        })
   }
   goToEditUser(){
     this._router.navigate(['edit'],{relativeTo:this._route})

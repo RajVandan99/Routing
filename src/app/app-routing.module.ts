@@ -14,12 +14,20 @@ const routes: Routes = [
   {path: "" , component: DashboardComponent},
   // {path: " " , redirectTo:"home", pathMatch:"full"},
   // {path: "home", component: DashboardComponent},
-  {path: "users", component: UsersComponent},
-  {path: "users/:id", component: UserComponent},
-  {path: "users/:id/edit", component: EditUserComponent},
-  {path: "products", component: ProductsComponent},
-  {path: "products/:id", component: ProductComponent},
-  {path: "products/:id/edit", component: EditProductComponent},
+  {path: "users", component: UsersComponent,
+   children: [
+    {path: ":id", component: UserComponent},
+    {path: ":id/edit", component: EditUserComponent}
+   ]},
+  // {path: "users/:id", component: UserComponent},
+  // {path: "users/:id/edit", component: EditUserComponent},
+  {path: "products", component: ProductsComponent,
+   children: [
+    {path: ":id", component: ProductComponent},
+    {path: ":id/edit", component: EditProductComponent}
+   ]},
+  // {path: "products/:id", component: ProductComponent},
+  // {path: "products/:id/edit", component: EditProductComponent},
   {path:"pageNotFound", component: PageNotFoundComponent},
   {path: "**", redirectTo: "pageNotFound"}
 ];

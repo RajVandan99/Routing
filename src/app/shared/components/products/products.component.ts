@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Iproducts } from '../../model/products';
 import { ProductsService } from '../../services/products.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -9,7 +10,7 @@ import { ProductsService } from '../../services/products.service';
 })
 export class ProductsComponent implements OnInit {
 productsInfo : Array<Iproducts> = [];
-selectedProdId !: Number ;
+selectedProdId !: number ;
   constructor(private _productsService:ProductsService) { }
 
   ngOnInit(): void {

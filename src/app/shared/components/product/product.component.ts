@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Iproducts } from '../../model/products';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 
 @Component({
@@ -16,8 +16,12 @@ productInfo !: Iproducts;
               private _router:Router) { }
 
   ngOnInit(): void {
-    this.productId = +this._route.snapshot.params['id'];
-    this.productInfo = this._productService.getSingleProduct(this.productId)
+    // this.productId = +this._route.snapshot.params['id'];
+     this._route.params
+         .subscribe((myParams:Params) => {
+          this.productId = +myParams['id']
+          this.productInfo = this._productService.getSingleProduct(this.productId);
+         })
   }
   goToEditProduct(){
     this._router.navigate(['/products', this.productId, 'edit'], {queryParamsHandling:"preserve"});
