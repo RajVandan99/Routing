@@ -10,13 +10,16 @@ import { PageNotFoundComponent } from './shared/components/page-not-found/page-n
 import { EditProductComponent } from './shared/components/edit-product/edit-product.component';
 import { EditUserComponent } from './shared/components/edit-user/edit-user.component';
 import { AuthGuard } from './shared/services/ahth.guard.service';
+import { LoginComponent } from './shared/components/login/login.component';
 
 const routes: Routes = [
-  {path: "" , component: DashboardComponent},
+  {path:"", component: LoginComponent},
+  {path: "home" , component: DashboardComponent},
   // {path: " " , redirectTo:"home", pathMatch:"full"},
   // {path: "home", component: DashboardComponent},
   {path: "users", component: UsersComponent,
-   canActivate: [AuthGuard],
+  canActivate :[AuthGuard],
+  //  canActivateChild: [AuthGuard],
    children: [
     {path: ":id", component: UserComponent},
     {path: ":id/edit", component: EditUserComponent}
@@ -25,6 +28,7 @@ const routes: Routes = [
   // {path: "users/:id/edit", component: EditUserComponent},
   {path: "products", component: ProductsComponent, 
    canActivate :[AuthGuard],
+    // canActivateChild :[AuthGuard],
    children: [
     {path: ":id", component: ProductComponent},
     {path: ":id/edit", component: EditProductComponent}

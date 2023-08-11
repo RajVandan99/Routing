@@ -12,6 +12,7 @@ import { ProductComponent } from './shared/components/product/product.component'
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { EditProductComponent } from './shared/components/edit-product/edit-product.component';
 import { EditUserComponent } from './shared/components/edit-user/edit-user.component';
+import { LoginComponent } from './shared/components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EditUserComponent } from './shared/components/edit-user/edit-user.compo
     ProductComponent,
     PageNotFoundComponent,
     EditProductComponent,
-    EditUserComponent
+    EditUserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -13,11 +13,13 @@ export class AppComponent {
     private _authService:AuthServiceService,
     private _router:Router){
   }
-  logInTo(){
-    this._authService.loggedInTo();
-  }
+  // logInTo(){
+  //   this._authService.loggedInTo();
+  // }
   logOut(){
     this._router.navigate(['/']);
     this._authService.logOutFrom();
+    localStorage.removeItem("token");
+    localStorage.removeItem("userRole");
   }
 }
