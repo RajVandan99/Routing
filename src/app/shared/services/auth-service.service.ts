@@ -29,10 +29,15 @@ loggedInStatus: boolean = false;
     this.loggedInStatus = true;
     this._router.navigate(['/home']);
     localStorage.setItem("token", "JWT token");
-    localStorage.setItem("userRole", "A");
+    localStorage.setItem("userRole", "user");
+  }
+  else if(username === "vdp@gmail.com" && password === "zaq1ZAQ!"){
+    this.loggedInStatus = true;
+    this._router.navigate(['/home']);
+    localStorage.setItem("token", "JWT token");
+    localStorage.setItem("userRole", "admin");
   }else{
     alert("please enter valid email and password")
-
   }
   }
   logOutFrom(){

@@ -1,18 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from './shared/services/auth-service.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit  {
   title = 'Routing_Practice';
+  userRole !:string ; // localstorage
   constructor(
     private _authService:AuthServiceService,
     private _router:Router){
   }
+  ngOnInit(): void {
+    // this.userRole = this._route.snapshot.data['userRole'];
+    this.userRole = localStorage.getItem("userRole")!
+  }
+  
   // logInTo(){
   //   this._authService.loggedInTo();
   // }

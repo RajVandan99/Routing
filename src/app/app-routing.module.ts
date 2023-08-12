@@ -11,6 +11,7 @@ import { EditProductComponent } from './shared/components/edit-product/edit-prod
 import { EditUserComponent } from './shared/components/edit-user/edit-user.component';
 import { AuthGuard } from './shared/services/ahth.guard.service';
 import { LoginComponent } from './shared/components/login/login.component';
+import { UserRoleGuard } from './shared/services/user-role.guard';
 
 const routes: Routes = [
   {path:"", component: LoginComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   // {path: "home", component: DashboardComponent},
   {path: "users", component: UsersComponent,
   canActivate :[AuthGuard],
+ 
   //  canActivateChild: [AuthGuard],
    children: [
     {path: ":id", component: UserComponent},
@@ -27,12 +29,14 @@ const routes: Routes = [
   // {path: "users/:id", component: UserComponent},
   // {path: "users/:id/edit", component: EditUserComponent},
   {path: "products", component: ProductsComponent, 
-   canActivate :[AuthGuard],
+   canActivate :[UserRoleGuard],
+   data:{userRole:'admin'},
     // canActivateChild :[AuthGuard],
-   children: [
-    {path: ":id", component: ProductComponent},
-    {path: ":id/edit", component: EditProductComponent}
-   ]},
+   children:[
+      {path: ":id", component: ProductComponent},
+      {path: ":id/edit", component: EditProductComponent}
+    ]
+  },
   // {path: "products/:id", component: ProductComponent},
   // {path: "products/:id/edit", component: EditProductComponent},
   {path:"pageNotFound", component: PageNotFoundComponent},
