@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AppComponent implements OnInit  {
   title = 'Routing_Practice';
-  userRole !:string ; // localstorage
+  userRole !:string | null;
   constructor(
     private _authService:AuthServiceService,
     private _router:Router){
