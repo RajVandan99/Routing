@@ -11,20 +11,26 @@ import { ProductsService } from '../../services/products.service';
 export class ProductComponent implements OnInit {
 productId !: number;
 productInfo !: Iproducts;
-  constructor(private _route:ActivatedRoute,
-              private _productService:ProductsService,
-              private _router:Router) { }
-
+constructor(
+  private _route:ActivatedRoute,
+  private _productService:ProductsService,
+  private _router:Router) {
+  this._route.data
+      .subscribe((res) => {
+        this.productInfo = res['product']
+        console.log(this.productInfo);
+      })
+    }
   ngOnInit(): void {
     // this.productId = +this._route.snapshot.params['id'];
-     this._route.params
-         .subscribe((myParams:Params) => {
-          this.productId = +myParams['id']
-          this.productInfo = this._productService.getSingleProduct(this.productId);
-         })
+    //  this._route.params
+    //      .subscribe((myParams:Params) => {
+    //       this.productId = +myParams['id']
+    //       this.productInfo = this._productService.getSingleProduct(this.productId);
+    //      })
   }
   goToEditProduct(){
-    this._router.navigate(['/products', this.productId, 'edit'], {queryParamsHandling:"preserve"});
+    this._router.navigate(['edit'], {queryParamsHandling:"preserve", relativeTo:this._route});
   }
 
 }

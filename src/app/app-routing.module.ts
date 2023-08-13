@@ -12,6 +12,7 @@ import { EditUserComponent } from './shared/components/edit-user/edit-user.compo
 import { AuthGuard } from './shared/services/ahth.guard.service';
 import { LoginComponent } from './shared/components/login/login.component';
 import { UserRoleGuard } from './shared/services/user-role.guard';
+import { ProductResolveGaurdService } from './shared/services/product-resolve-gaurd.service';
 
 const routes: Routes = [
   {path:"", component: LoginComponent},
@@ -33,7 +34,9 @@ const routes: Routes = [
    data:{userRole:'admin'},
     // canActivateChild :[AuthGuard],
    children:[
-      {path: ":id", component: ProductComponent},
+      {path: ":id", component: ProductComponent, 
+      resolve:{product:ProductResolveGaurdService}
+      },
       {path: ":id/edit", component: EditProductComponent}
     ]
   },
